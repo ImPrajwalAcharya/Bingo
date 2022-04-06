@@ -80,10 +80,83 @@ const clicked=function() {
 // document.getElementById(23).onclick=clicked;
 // document.getElementById(24).onclick=clicked;
 let array=[];
+let booleanarray=[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
+let matched=0;
 for(let i=0;i<25;i++){
     array[i]=document.getElementById(i);
     array[i].onclick=function(){
         this.style.backgroundColor = "red";
+        booleanarray[i]=0;
+        matched=checkWin();
+Result = document.getElementById("Result");
+Result.textContent="You Have "+matched+" Score";
     };
+}
 
+const checkWin = () => {
+    
+    let sum = 0;
+    let index = 0;
+    let bingoStatus=0;
+    
+    //check wins horizontally
+    for( let i = 0; i < 5; i++ ){
+
+        for( let j = 0; j < 5; j++){
+
+            index = 5 * i + j;
+            sum += booleanarray[index];
+        }
+
+        if( sum == 0){
+
+            bingoStatus++;
+        }
+
+        sum = 0;
+    }
+console.log(bingoStatus);
+console.log(bingoStatus);
+//check wins vertically
+for( let i = 0; i < 5; i++ ){
+    
+    for( let j = 0; j < 5; j++){
+        
+        index = i + 5 * j;
+        sum += booleanarray[ index ];
+    }
+    
+    if( sum == 0 ){
+        bingoStatus++;
+    }
+    
+    sum = 0;
+}
+
+//check wins principal diagonal
+for( let i = 0; i < 5; i++){
+    
+        index = i * 6;
+        sum += booleanarray[index];
+    }
+    
+    if( sum == 0 ){
+        bingoStatus++;
+    }
+    
+    sum = 0;
+    //check wins in off diagonal
+    for( let i = 1; i <= 5; i++ ){
+        
+        index = i * 4;
+        sum += booleanarray[index];
+    }
+    
+    if( sum == 0 ){
+        bingoStatus++;
+    }
+    
+    sum = 0;
+    
+    return bingoStatus;
 }
