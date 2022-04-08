@@ -1,3 +1,6 @@
+let array=[];
+let booleanarray=[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
+let matched=0;
 //function to generate 1 to 25 numbers in random order
 function RandNumGenerator() {
     const a = [];
@@ -27,14 +30,26 @@ function RandNumGenerator() {
 }
 //for maping the numbers in grid
 function mapping(b, i, gameBoard) {
+    let temp2=document.createElement("br");
+    // gameBoard.appendChild(temp2);
+    // gameBoard.appendChild(temp2);
+
     let g = i + 5;
     for (i; i < g; i++) {
-        let temp = document.createElement("div");
+         let temp = document.createElement("div");
+        let name="col-md-2 col-sm-2 col-xs-2 col-lg-2 "
         temp.id = i;
-        temp.className = "Box"
-        temp.textContent = b[i];
+        if (i%2==1){
+            temp.className = name;
+        }
+        else{
+            temp.className = name;
+        }
+        temp.innerHTML="<br><center>" + b[i] +" </center> <br>"
+        //temp.textContent = b[i];
         gameBoard.appendChild(temp);
     }
+     
 }
 b = RandNumGenerator();
 let gameBoard = document.getElementById("gameBoard1");
@@ -47,49 +62,17 @@ gameBoard = document.getElementById("gameBoard4");
 mapping(b, 15, gameBoard);
 gameBoard = document.getElementById("gameBoard5");
 mapping(b, 20, gameBoard);
-
-
-
 //Detecting the click and replacing with zero
-const clicked=function() {
-}
 
-// document.getElementById(0).onclick=clicked;
-// document.getElementById(1).onclick=clicked;
-// document.getElementById(2).onclick=clicked;
-// document.getElementById(3).onclick=clicked;
-// document.getElementById(4).onclick=clicked;
-// document.getElementById(5).onclick=clicked;
-// document.getElementById(6).onclick=clicked;
-// document.getElementById(7).onclick=clicked;
-// document.getElementById(8).onclick=clicked;
-// document.getElementById(9).onclick=clicked;
-// document.getElementById(10).onclick=clicked;
-// document.getElementById(11).onclick=clicked;
-// document.getElementById(12).onclick=clicked;
-// document.getElementById(13).onclick=clicked;
-// document.getElementById(14).onclick=clicked;
-// document.getElementById(15).onclick=clicked;
-// document.getElementById(16).onclick=clicked;
-// document.getElementById(17).onclick=clicked;
-// document.getElementById(18).onclick=clicked;
-// document.getElementById(19).onclick=clicked;
-// document.getElementById(20).onclick=clicked;
-// document.getElementById(21).onclick=clicked;
-// document.getElementById(22).onclick=clicked;
-// document.getElementById(23).onclick=clicked;
-// document.getElementById(24).onclick=clicked;
-let array=[];
-let booleanarray=[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
-let matched=0;
 for(let i=0;i<25;i++){
     array[i]=document.getElementById(i);
     array[i].onclick=function(){
-        this.style.backgroundColor = "red";
+        this.style.backgroundColor = "#ffffff";
         booleanarray[i]=0;
         matched=checkWin();
-Result = document.getElementById("Result");
-Result.textContent="You Have "+matched+" Score";
+        if(matched>=5){
+        $("#myModal").modal();
+        }
     };
 }
 
@@ -115,8 +98,7 @@ const checkWin = () => {
 
         sum = 0;
     }
-console.log(bingoStatus);
-console.log(bingoStatus);
+
 //check wins vertically
 for( let i = 0; i < 5; i++ ){
     

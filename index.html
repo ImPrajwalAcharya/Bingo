@@ -1,54 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-
-    <title>Bingo</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet"> 
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style type="text/css">
+  .col-md-7>.row>div{
+  	border:1px solid #06113C;
+  	padding: 1px;
+  	background-color:#FF8C32;
+  	font-size: 25px;
+  }
+  body{
+  	font-family: 'Roboto', sans-serif;
+  	background-color: #06113C;
+  }
+  button{
+border-radius: 2px;
+  }
+  </style>
+	<title></title>
 </head>
-<style>
-#gameBoard1,#gameBoard2,#gameBoard3,#gameBoard4,#gameBoard5{
-display: flex;
-justify-content: center;
-flex-flow: row;
-}
-#mainBoard{
-display: flex;
-justify-content: center;
-align-items: center;
-flex-flow: column;
-background-color: blue;
-height: fit-content;
-width: fit-content;
-}
-.Box{
-    padding: 30px;
-    width:45px;
-    height:45px;
-    border:2px solid black;
-}
-#Result{
-background-color: brown;
-color: antiquewhite;
-font-size:x-large;
-
-}
-
-</style>
 <body>
-    <h1>Bingo</h1>
-    <div id="mainBoard">
-    <div id="gameBoard1"></div>
-    <div id="gameBoard2"></div>
-    <div id="gameBoard3"></div>
-    <div id="gameBoard4"></div>
-    <div id="gameBoard5"></div>
-   
+<div class="container">
+<div class="row">
+	<br>
+	<center>
+		<button  id="Replay" class="btn-default" onclick="javascript:location.reload(true)">Replay</button>
+	</center>
+<br>
 </div>
-<div id="Result">   
+<div class="row">
+	<div class="col-md-3"></div>
+	<div class="col-md-7">
+		<div class="row" id="gameBoard1">
+				</div>
+		<div class="row" id="gameBoard2">
+		</div>
+		<div class="row" id="gameBoard3">
+		</div>
+		<div class="row" id="gameBoard4">
+		</div>
+		<div class="row" id="gameBoard5">
+		</div>
+	</div>
+	<div class="col-md-3"></div>
 </div>
-    <script src="./hello.js"></script>
+</div>
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Bingo</h4>
+      </div>
+      <div class="modal-body">
+        <p>You Won!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" onclick="javascript:location.reload(true)">RePlay</button>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
+ <script src="./hello.js"></script>
 </html>
