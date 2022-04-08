@@ -45,7 +45,7 @@ function mapping(b, i, gameBoard) {
         else{
             temp.className = name;
         }
-        temp.innerHTML="<br><center>" + b[i] +" </center> <br>"
+        temp.innerHTML="<center>" + b[i] +" </center> "
         //temp.textContent = b[i];
         gameBoard.appendChild(temp);
     }
